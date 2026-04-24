@@ -192,7 +192,7 @@ install_chroot_packages() {
 
     rm -v -rf /etc/cron.daily/
     echo -n '' > /etc/motd
-    echo -n '# <file system> <mount point>   <type>  <options>       <dump>  <pass>' > /etc/fstab
+    echo '# <file system> <mount point>   <type>  <options>       <dump>  <pass>' > /etc/fstab
 
     echo 'nameserver 1.1.1.1' > /etc/resolv.conf
     echo 'debian' > /etc/hostname
