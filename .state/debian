@@ -1,1 +1,3 @@
-EMPTY
+42bc123f287e734cceedbb8d5cf5e901279511b2d79884d30904d017776b5d9a http://deb.debian.org/debian/dists/trixie/Release
+57f150ddbee154fbaf5b24711563daa2fcba3ef73b6c774eb8141cb357c23dba http://deb.debian.org/debian/dists/trixie-updates/Release
+5503f60bc823db9bf122347d50dbbc8aa1e9783e330854257fe1831420115958 http://security.debian.org/dists/trixie-security/Release
