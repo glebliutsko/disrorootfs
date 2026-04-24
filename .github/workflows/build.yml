@@ -122,7 +122,7 @@ jobs:
           
           rm -rf "$ASSETS_DIR"/*
           mv -v "$image_path" "$ASSETS_DIR/$OUTPUT_ROOTFS_TAR"
-          sha256sum | cut -d ' ' -f1 > "$ASSETS_DIR/$OUTPUT_ROOTFS_SHA256"
+          sha256sum "$ASSETS_DIR/$OUTPUT_ROOTFS_TAR" | cut -d ' ' -f1 > "$ASSETS_DIR/$OUTPUT_ROOTFS_SHA256"
 
       - name: Upload assets releases
         env:
