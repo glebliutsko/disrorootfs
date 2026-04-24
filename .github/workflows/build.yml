@@ -1,0 +1,130 @@
+name: Detect Debian Repository Changes
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */4 * * *'
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  check-updates:
+    runs-on: ubuntu-latest
+  
+    outputs:
+      tag: ${{ steps.tag.outputs.tag }}
+      commit: ${{ steps.make-commit.outputs.commit }}
+      need-build: ${{ steps.detect.outputs.changed }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-tags: true
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+
+      - name: Detect repository changes
+        id: detect
+        run: |
+          current_file="$(mktemp)"
+          old_file=".state/debian"
+
+          mkdir -p .state
+
+          debian/repohash.sh > "$current_file"
+
+          if [[ ! -f "$old_file" ]] || ! cmp -s "$old_file" "$current_file"; then
+            mv -f "$current_file" "$old_file"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            rm -f "$current_file"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+        
+      - name: Commit and push updated state
+        id: make-commit
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          git add .state/*
+          git commit -m "(Github Action) Update Debian repository state"
+          git push
+
+          commit_hash="$(git rev-parse HEAD)"
+          echo "commit=$commit_hash" > "$GITHUB_OUTPUT"
+      
+      - name: Create tag and release
+        id: tag
+        if: steps.detect.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          next_tag="$(git tag | grep -E '^v[0-9]+$' | sed 's/^v//' | sort -n | tail -1 | awk '{print "v" $1+1}')"
+          if [[ -z "$next_tag" ]]; then
+            next_tag="v1"
+          fi
+
+          git tag "$next_tag"
+          git push origin "$next_tag"
+          gh release create "$next_tag"
+          echo "tag=$next_tag" > "$GITHUB_OUTPUT"
+
+  build-debian:
+    runs-on: ubuntu-latest
+
+    needs: check-updates
+    if: needs.check-updates.outputs.need-build == 'true'
+
+    env:
+      ASSETS_DIR: 'output'
+      OUTPUT_ROOTFS_TAR: 'debian.tar.zst'
+      OUTPUT_ROOTFS_SHA256: 'debian.sha256'
+
+      COMMIT: ${{ needs.check-updates.outputs.commit }}
+      TAG: ${{ needs.check-updates.outputs.tag }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          ref: ${{ env.COMMIT }}
+
+      - name: Prepare
+        id: prepare
+        run: |
+          mkdir -p "$ASSETS_DIR"
+          echo "state-hash=$(cat .state/debian | sha256sum | cut -d ' ' -f1)" > "$GITHUB_OUTPUT"
+
+      - name: Restore cache
+        id: cache
+        uses: actions/cache@v5
+        with:
+          path: ${{ env.ASSETS_DIR }}
+          key: ${{ steps.prepare.outputs.state-hash }}
+  
+      - name: Build Debian rootfs
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y debootstrap uidmap zstd
+
+          sudo ./debian/make.sh
+
+          image_path="$(echo debian/*.tar.zst)"
+          [[ -f "$image_path" ]] || exit 1
+          
+          mv -v "$image_path" "$ASSETS_DIR/$OUTPUT_ROOTFS_TAR"
+          sha256sum | cut -d ' ' -f1 > "$ASSETS_DIR/$OUTPUT_ROOTFS_SHA256"
+
+      - name: Upload assets releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release upload "$TAG" "$ASSETS_DIR"/*
