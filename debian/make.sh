@@ -145,6 +145,7 @@ run_debootstrap() {
     --arch="${DEBIAN_ARCH}" \
     --variant="${DEBOOTSTRAP_VARIANT}" \
     --include="${packages}" \
+    --exclude="usr-is-merged" \
     "${DEBIAN_RELEASE}" \
     "${ROOTFS_DIR}" \
     "${DEBIAN_MIRROR}"
@@ -191,6 +192,12 @@ install_chroot_packages() {
 
     rm -v -rf /etc/cron.daily/
     echo -n '' > /etc/motd
+
+    echo 'nameserver 1.1.1.1' > /etc/resolv.conf
+    echo 'debian' > /etc/hostname
+    rm /etc/machine-id
+
+    rm -v -rf /var/log/*
   "
 }
 
