@@ -186,12 +186,11 @@ install_chroot_packages() {
     apt upgrade -y
     apt install -y ${packages}
     apt clean
-  "
+    rm -v -rf /var/lib/apt/lists/*
 
-  rm -v -rf "${ROOTFS_DIR:?}"/var/cache/apt/archives/*
-  rm -v -rf "${ROOTFS_DIR:?}"/var/lib/apt/lists/*
-  rm -v -rf "${ROOTFS_DIR:?}"/etc/cron.daily/
-  echo -n '' > "${ROOTFS_DIR:?}"/etc/motd
+    rm -v -rf /etc/cron.daily/
+    echo -n '' > /etc/motd
+  "
 }
 
 rootfs_pack() {
@@ -209,9 +208,6 @@ rootfs_pack() {
 main() {
   require_root
   require_tools
-
-  # mount_chroot_fs
-  # exit 0
 
   trap unmount_all EXIT
 
