@@ -120,6 +120,7 @@ jobs:
           image_path="$(echo debian/*.tar.zst)"
           [[ -f "$image_path" ]] || exit 1
           
+          rm -rf "$ASSETS_DIR"/*
           mv -v "$image_path" "$ASSETS_DIR/$OUTPUT_ROOTFS_TAR"
           sha256sum | cut -d ' ' -f1 > "$ASSETS_DIR/$OUTPUT_ROOTFS_SHA256"
 
