@@ -195,9 +195,12 @@ install_chroot_packages() {
 
     echo 'nameserver 1.1.1.1' > /etc/resolv.conf
     echo 'debian' > /etc/hostname
-    rm /etc/machine-id
+
+    rm -v -f /etc/machine-id
+    rm -v -f /var/lib/dbus/machine-id
 
     rm -v -rf /var/log/*
+    rm -v -rf /var/cache/*/*
   "
 }
 
