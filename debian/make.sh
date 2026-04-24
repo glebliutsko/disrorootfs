@@ -116,8 +116,9 @@ mount_chroot_fs() {
     "/dev/zero"
   )
 
-  mount -v -t tmpfs tmpfs "${ROOTFS_DIR}/dev" -o mode=755
   local i
+
+  mount -v -t tmpfs tmpfs "${ROOTFS_DIR}/dev" -o mode=755
   for i in "${mounts_dev[@]}"; do
     touch "${ROOTFS_DIR}/$i"
     mount -v --bind "$i" "${ROOTFS_DIR}/$i"
@@ -144,6 +145,7 @@ run_debootstrap() {
     --arch="${DEBIAN_ARCH}" \
     --variant="${DEBOOTSTRAP_VARIANT}" \
     --include="${packages}" \
+    --exclude="usr-is-merged" \
     "${DEBIAN_RELEASE}" \
     "${ROOTFS_DIR}" \
     "${DEBIAN_MIRROR}"
@@ -190,6 +192,16 @@ install_chroot_packages() {
 
     rm -v -rf /etc/cron.daily/
     echo -n '' > /etc/motd
+    echo -n '# <file system> <mount point>   <type>  <options>       <dump>  <pass>' > /etc/fstab
+
+    echo 'nameserver 1.1.1.1' > /etc/resolv.conf
+    echo 'debian' > /etc/hostname
+
+    rm -v -f /etc/machine-id
+    rm -v -f /var/lib/dbus/machine-id
+
+    rm -v -rf /var/log/*
+    rm -v -rf /var/cache/*/*
   "
 }
 
