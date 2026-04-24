@@ -116,8 +116,9 @@ mount_chroot_fs() {
     "/dev/zero"
   )
 
-  mount -v -t tmpfs tmpfs "${ROOTFS_DIR}/dev" -o mode=755
   local i
+
+  mount -v -t tmpfs tmpfs "${ROOTFS_DIR}/dev" -o mode=755
   for i in "${mounts_dev[@]}"; do
     touch "${ROOTFS_DIR}/$i"
     mount -v --bind "$i" "${ROOTFS_DIR}/$i"
