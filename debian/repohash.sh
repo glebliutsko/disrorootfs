@@ -46,7 +46,7 @@ calculate_hashs() {
             source_name="$source"
         else
             hash="$(cat "$source" | sha256sum | cut -d ' ' -f1)"
-            source_name="${source#${ROOT_DIR}/}"
+            source_name="${source#"${ROOT_DIR}"/}"
         fi
 
         echo "$hash $source_name"
