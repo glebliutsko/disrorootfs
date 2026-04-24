@@ -4,9 +4,8 @@ on:
   schedule:
     - cron: '0 */4 * * *'
   push:
-    paths:
-      - 'debian/make.sh'
-      - 'debian/repohash.sh'
+    paths-ignore:
+      - '.state/**'
   workflow_dispatch:
 
 permissions:
