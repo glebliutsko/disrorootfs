@@ -1,5 +1,0 @@
-42bc123f287e734cceedbb8d5cf5e901279511b2d79884d30904d017776b5d9a http://deb.debian.org/debian/dists/trixie/Release
-23e9c8daa5d1d3a6199be69b1e02aa34fbf3ad0f4c285f81092074ce7cd932ad http://deb.debian.org/debian/dists/trixie-updates/Release
-5503f60bc823db9bf122347d50dbbc8aa1e9783e330854257fe1831420115958 http://security.debian.org/dists/trixie-security/Release
-981359104543351631e16f195755eb56400c1029ba44f40e42742a2c67db3f29 debian/make.sh
-0d2344bf5defb227593b03afb6783799b94ebb5a699409c8aad996f08df115e6 debian/repohash.sh
