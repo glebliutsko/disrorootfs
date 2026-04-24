@@ -8,8 +8,13 @@ ROOT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 DEBIAN_RELEASE='trixie'
 DEBIAN_REPOSITORY_RELEASE=(
     "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}/Release"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}/InRelease"
+
     "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/Release"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/InRelease"
+    
     "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/Release"
+    "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/InRelease"
     "${SCRIPT_DIR}/make.sh"
     "${SCRIPT_DIR}/repohash.sh"
 )
