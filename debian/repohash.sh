@@ -2,6 +2,8 @@
 
 set -euo pipefail
 
+SCRIPT_DIR="$(cd -- "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 DEBIAN_RELEASE='trixie'
 DEBIAN_REPOSITORY_RELEASE=(
     "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}/Release"
@@ -36,7 +38,7 @@ calculate_hashs() {
 
 main() {
     require_tools
-    
+
     calculate_hashs
 }
 

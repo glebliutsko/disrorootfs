@@ -1,0 +1,51 @@
+name: Detect Debian Repository Changes
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+  push:
+    paths:
+      - 'debian/make.sh'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-debian-state:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Detect repository changes
+        id: detect
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          current_file="$(mktemp)"
+          debian/repohash.sh > "${current_file}"
+
+          if [[ ! -f .state/debian ]] || ! cmp -s .state/debian "${current_file}"; then
+            mv -f "${current_file}" .state/debian
+            echo "changed=true" >> "${GITHUB_OUTPUT}"
+          else
+            rm -f "${current_file}"
+            echo "changed=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+      - name: Configure git
+        if: steps.detect.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+        
+      - name: Commit and push updated state
+        if: steps.detect.outputs.changed == 'true'
+        shell: bash
+        run: |
+          git add .state/debian
+          git commit -m "(Github Action) Update Debian repository state"
+          git push
