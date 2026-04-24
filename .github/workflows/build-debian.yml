@@ -34,7 +34,7 @@ jobs:
       - name: Build Debian rootfs
         shell: bash
         run: |
-          sudo unshare --user --fork --pid --mount --mount-proc --map-root-user --map-auto ./debian/make.sh
+          sudo ./debian/make.sh
 
       - name: Prepare release metadata
         id: release
