@@ -27,8 +27,8 @@ jobs:
       - name: Configure user namespaces
         shell: bash
         run: |
-          echo "${USER}:1000000:100000" | sudo tee /etc/subuid
-          echo "${USER}:1000000:100000" | sudo tee /etc/subgid
+          echo "root:1000000:100000" | sudo tee /etc/subuid
+          echo "root:1000000:100000" | sudo tee /etc/subgid
           sudo sysctl -w kernel.unprivileged_userns_clone=1
 
       - name: Build Debian rootfs
