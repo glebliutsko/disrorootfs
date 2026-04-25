@@ -1,8 +1,8 @@
-42bc123f287e734cceedbb8d5cf5e901279511b2d79884d30904d017776b5d9a http://deb.debian.org/debian/dists/trixie/Release
-7592e4ccb4658a58bfe485d3356b3c983bf8ccff7fca1f6091e4d4296284ed18 http://deb.debian.org/debian/dists/trixie/InRelease
-cb243bafe1e5e683d1db5bc49329830ab5522ba12eb02c2bee80ed0baf76cd0c http://deb.debian.org/debian/dists/trixie-updates/Release
-a0ea36afd4e0e3bb0fc8aa2dd58180a76995a98cdd1a7fe3d3acf197f13506bd http://deb.debian.org/debian/dists/trixie-updates/InRelease
-7609e6457c51a881a653341fc2b9b91a011f0f52c8e8fa3c0c49a4d0b1e921b2 http://security.debian.org/dists/trixie-security/Release
-9ca83b42352943be75d9c5d5e42c8248451a58658ade685bc6513b24cd2e8741 http://security.debian.org/dists/trixie-security/InRelease
+b41e4b9bd79ca009afe7fb329b16bc305f1c7acab9ea6ce4f571526ede926547 http://deb.debian.org/debian/dists/trixie/main/binary-amd64/Packages.xz
+9979608b93622d99f0b8bd1143c8ba7039a5d23bd3fcebb8331a1b4b531c96d2 http://deb.debian.org/debian/dists/trixie/contrib/binary-amd64/Packages.xz
+a90c615796a5df83d3c8db4fce17b355a4bd41a97ac8e12649ca96faccbe6cab http://deb.debian.org/debian/dists/trixie-updates/main/binary-amd64/Packages.xz
+0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275 http://deb.debian.org/debian/dists/trixie-updates/contrib/binary-amd64/Packages.xz
+de88de57533962d0969d81e0508f3f7bbd31c94211fd0caed2a1c454ef5be331 http://security.debian.org/dists/trixie-security/main/binary-amd64/Packages.xz
+0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275 http://security.debian.org/dists/trixie-security/contrib/binary-amd64/Packages.xz
 86d0b62e19b4da2148c651a8796eeeb5249b3730c65e6db9494bebed1314cddc debian/make.sh
-c89f5ed130e1824f799270f1a50f5d12bf4ef33d05b376d71a2adba3d29bcb3f debian/repohash.sh
+6aade6d20b647d7c7ecfd90ab2fec6222af2a01a3fe77886a42f16f1af6d451a debian/repohash.sh
