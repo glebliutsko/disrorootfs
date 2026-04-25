@@ -7,14 +7,15 @@ ROOT_DIR="$(cd -- "${SCRIPT_DIR}/.." && pwd)"
 
 DEBIAN_RELEASE='trixie'
 DEBIAN_REPOSITORY_RELEASE=(
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}/Release"
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}/InRelease"
+    "http://deb.debian.org/debian/dists/$DEBIAN_RELEASE/main/binary-amd64/Packages.xz"
+    "http://deb.debian.org/debian/dists/$DEBIAN_RELEASE/contrib/binary-amd64/Packages.xz"
 
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/Release"
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/InRelease"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/main/binary-amd64/Packages.xz"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/contrib/binary-amd64/Packages.xz"
     
-    "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/Release"
-    "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/InRelease"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-security/main/binary-amd64/Packages.xz"
+    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-security/contrib/binary-amd64/Packages.xz"
+
     "${SCRIPT_DIR}/make.sh"
     "${SCRIPT_DIR}/repohash.sh"
 )
