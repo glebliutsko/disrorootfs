@@ -202,6 +202,8 @@ install_chroot_packages() {
 
     rm -v -rf /var/log/*
     rm -v -rf /var/cache/*/*
+
+    touch /var/log/lastlog
   "
 }
 
