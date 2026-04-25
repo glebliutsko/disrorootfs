@@ -13,8 +13,8 @@ DEBIAN_REPOSITORY_RELEASE=(
     "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/main/binary-amd64/Packages.xz"
     "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-updates/contrib/binary-amd64/Packages.xz"
     
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-security/main/binary-amd64/Packages.xz"
-    "http://deb.debian.org/debian/dists/${DEBIAN_RELEASE}-security/contrib/binary-amd64/Packages.xz"
+    "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/main/binary-amd64/Packages.xz"
+    "http://security.debian.org/dists/${DEBIAN_RELEASE}-security/contrib/binary-amd64/Packages.xz"
 
     "${SCRIPT_DIR}/make.sh"
     "${SCRIPT_DIR}/repohash.sh"
