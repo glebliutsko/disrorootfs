@@ -1,8 +1,8 @@
 42bc123f287e734cceedbb8d5cf5e901279511b2d79884d30904d017776b5d9a http://deb.debian.org/debian/dists/trixie/Release
 7592e4ccb4658a58bfe485d3356b3c983bf8ccff7fca1f6091e4d4296284ed18 http://deb.debian.org/debian/dists/trixie/InRelease
-23e9c8daa5d1d3a6199be69b1e02aa34fbf3ad0f4c285f81092074ce7cd932ad http://deb.debian.org/debian/dists/trixie-updates/Release
-a50844fc507df9b85a507268b386d83a8121ca708bea672cc3fee6def4299d05 http://deb.debian.org/debian/dists/trixie-updates/InRelease
-45ed5ba5491db747c4dc8612cacace471984705c70609bf688e29770fcca2b8f http://security.debian.org/dists/trixie-security/Release
-150f8720724b294c78eaf2ddb84416a821fe23ec66db98adf3f49a266881500a http://security.debian.org/dists/trixie-security/InRelease
+193b8ed6af49dc85968a935df3efb15b27f3341aa489b0a2ac850b56a3cecf16 http://deb.debian.org/debian/dists/trixie-updates/Release
+b07430023ae06bb0b75896673dbf2ba84681b1ee9caac972bac48f7ec665677e http://deb.debian.org/debian/dists/trixie-updates/InRelease
+ab373ebd3d9c1952bdda120d8669c7718c16b55b6fe33d1cee7f56ca05609e52 http://security.debian.org/dists/trixie-security/Release
+546bdab46b00b3ab97927a5483bd6d2b046af43cee6b128068e51cca4209bb77 http://security.debian.org/dists/trixie-security/InRelease
 86d0b62e19b4da2148c651a8796eeeb5249b3730c65e6db9494bebed1314cddc debian/make.sh
 c89f5ed130e1824f799270f1a50f5d12bf4ef33d05b376d71a2adba3d29bcb3f debian/repohash.sh
