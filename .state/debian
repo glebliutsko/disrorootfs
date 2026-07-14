@@ -1,6 +1,6 @@
 3ab4e811cf4f3e5a335d382c58cc19d85f1abe7a4ef4689160ca1f637fa0e9b3 http://deb.debian.org/debian/dists/trixie/main/binary-amd64/Packages.xz
 9979608b93622d99f0b8bd1143c8ba7039a5d23bd3fcebb8331a1b4b531c96d2 http://deb.debian.org/debian/dists/trixie/contrib/binary-amd64/Packages.xz
-a90c615796a5df83d3c8db4fce17b355a4bd41a97ac8e12649ca96faccbe6cab http://deb.debian.org/debian/dists/trixie-updates/main/binary-amd64/Packages.xz
+cb99e2deb4645a6cb5e5b120113345885126430206cd0450d01a56027e30c134 http://deb.debian.org/debian/dists/trixie-updates/main/binary-amd64/Packages.xz
 0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275 http://deb.debian.org/debian/dists/trixie-updates/contrib/binary-amd64/Packages.xz
 221ed8c84dd99f0b32b23c507d5d67ae51ddafccd58a621239803501817413ab http://security.debian.org/dists/trixie-security/main/binary-amd64/Packages.xz
 0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275 http://security.debian.org/dists/trixie-security/contrib/binary-amd64/Packages.xz
