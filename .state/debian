@@ -2,7 +2,7 @@
 9979608b93622d99f0b8bd1143c8ba7039a5d23bd3fcebb8331a1b4b531c96d2 http://deb.debian.org/debian/dists/trixie/contrib/binary-amd64/Packages.xz
 10012cb384dc2613586d7b3d391d92a5637c9faa36017239739f2a6109a0d45f http://deb.debian.org/debian/dists/trixie-updates/main/binary-amd64/Packages.xz
 0040f94d11d0039505328a90b2ff48968db873e9e7967307631bf40ef5679275 http://deb.debian.org/debian/dists/trixie-updates/contrib/binary-amd64/Packages.xz
-48af5702c5048c7a1c8fee8635c4df45c1ca977c29b9478f632fa28c3c40aad5 http://security.debian.org/dists/trixie-security/main/binary-amd64/Packages.xz
+0fd32726381d8017ae8a222d38ae0cbf653e9a76c3d74ca5d365be5bfa513d80 http://security.debian.org/dists/trixie-security/main/binary-amd64/Packages.xz
 a3ae58b52b1ec7c986be822100f1188430b30b1f21e17fd361e9ae777e2dc6b6 http://security.debian.org/dists/trixie-security/contrib/binary-amd64/Packages.xz
 8af6d7299af9b598cd62b7197ac0dc790f29d806b5e923fef6b87bcf723fd652 debian/make.sh
 6aade6d20b647d7c7ecfd90ab2fec6222af2a01a3fe77886a42f16f1af6d451a debian/repohash.sh
